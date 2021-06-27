@@ -1,0 +1,241 @@
+{
+  "interactionModel": {
+    "languageModel": {
+      "invocationName": "my home",
+      "intents": [
+        {
+          "name": "AMAZON.CancelIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.HelpIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.StopIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.NavigateHomeIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.FallbackIntent",
+          "samples": []
+        },
+        {
+          "name": "InputIntent",
+          "slots": [
+            {
+              "name": "state",
+              "type": "status",
+              "multipleValues": {
+                "enabled": false
+              }
+            },
+            {
+              "name": "device",
+              "type": "devices"
+            }
+          ],
+          "samples": [
+            "turn {state} the {device}"
+          ]
+        },
+        {
+          "name": "CheckRooms",
+          "slots": [
+            {
+              "name": "rooms",
+              "type": "home"
+            }
+          ],
+          "samples": [
+            "go to {rooms} room",
+            "{rooms} room"
+          ]
+        },
+        {
+          "name": "FanSpeed",
+          "slots": [
+            {
+              "name": "value",
+              "type": "speed",
+              "multipleValues": {
+                "enabled": false
+              }
+            }
+          ],
+          "samples": [
+            "speed {value} percent"
+          ]
+        }
+      ],
+      "types": [
+        {
+          "values": [
+            {
+              "name": {
+                "value": "bed"
+              }
+            },
+            {
+              "name": {
+                "value": "living"
+              }
+            }
+          ],
+          "name": "home"
+        },
+        {
+          "values": [
+            {
+              "name": {
+                "value": "off"
+              }
+            },
+            {
+              "name": {
+                "value": "on"
+              }
+            }
+          ],
+          "name": "status"
+        },
+        {
+          "values": [
+            {
+              "name": {
+                "value": "fan"
+              }
+            },
+            {
+              "name": {
+                "value": "light"
+              }
+            }
+          ],
+          "name": "devices"
+        },
+        {
+          "values": [
+            {
+              "name": {
+                "value": "60"
+              }
+            },
+            {
+              "name": {
+                "value": "75"
+              }
+            },
+            {
+              "name": {
+                "value": "50"
+              }
+            },
+            {
+              "name": {
+                "value": "0"
+              }
+            },
+            {
+              "name": {
+                "value": "25"
+              }
+            }
+          ],
+          "name": "speed"
+        }
+      ]
+    },
+    "dialog": {
+      "intents": [
+        {
+          "name": "InputIntent",
+          "confirmationRequired": false,
+          "prompts": {},
+          "slots": [
+            {
+              "name": "state",
+              "type": "status",
+              "elicitationRequired": false,
+              "confirmationRequired": false,
+              "prompts": {},
+              "validations": [
+                {
+                  "type": "hasEntityResolutionMatch",
+                  "prompt": "Slot.Validation.1330514949820.1369215238226.21923385726"
+                }
+              ]
+            },
+            {
+              "name": "device",
+              "type": "devices",
+              "elicitationRequired": false,
+              "confirmationRequired": false,
+              "prompts": {},
+              "validations": [
+                {
+                  "type": "hasEntityResolutionMatch",
+                  "prompt": "Slot.Validation.1330514949820.482167876073.1285751618163"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "CheckRooms",
+          "confirmationRequired": false,
+          "prompts": {},
+          "slots": [
+            {
+              "name": "rooms",
+              "type": "home",
+              "elicitationRequired": false,
+              "confirmationRequired": false,
+              "prompts": {},
+              "validations": [
+                {
+                  "type": "hasEntityResolutionMatch",
+                  "prompt": "Slot.Validation.18126861042.213346603381.1175929414242"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "delegationStrategy": "ALWAYS"
+    },
+    "prompts": [
+      {
+        "id": "Slot.Validation.1330514949820.482167876073.1285751618163",
+        "variations": [
+          {
+            "type": "PlainText",
+            "value": "say the device light or fan"
+          }
+        ]
+      },
+      {
+        "id": "Slot.Validation.18126861042.213346603381.1175929414242",
+        "variations": [
+          {
+            "type": "PlainText",
+            "value": "say the correct room"
+          }
+        ]
+      },
+      {
+        "id": "Slot.Validation.1330514949820.1369215238226.21923385726",
+        "variations": [
+          {
+            "type": "PlainText",
+            "value": "say the state wether on or off"
+          }
+        ]
+      }
+    ]
+  },
+  "version": "44"
+}
